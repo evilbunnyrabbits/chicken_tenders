@@ -1,18 +1,3 @@
 {
-  "chicken": [
-    {
-      "type": "asdf",
-      "sauce": "asdf",
-      "score": 2,
-      "image": "https://media1.tenor.com/images/79d7dae61442332401760be3b2420e5f/tenor.gif?itemid=10302436",
-      "id": 1
-    },
-    {
-      "type": "test",
-      "sauce": "etst",
-      "score": 5,
-      "image": "https://media1.tenor.com/images/79d7dae61442332401760be3b2420e5f/tenor.gif?itemid=10302436",
-      "id": 2
-    }
-  ]
+  "chicken": []
 }

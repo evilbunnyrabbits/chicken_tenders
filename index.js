@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function(e){
 
         fetch(url, packet)
             .then(res => res.json())
-            .then(data => console.log(data))
     }
 
 
@@ -63,6 +62,7 @@ document.addEventListener('DOMContentLoaded', function(e){
         <p class="score">${data.score}</p>
         <button class="up-vote">Up Vote</button>
         <button class="down-vote">Down Vote</button>
+        <button class="delete">Delete</button>
         `
         list.append(tenderP)
     }
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function(e){
                 const tenderId = parentDiv.id
                 const scoreContainer = parentDiv.querySelector(".score")
                 const newScore = parseInt(scoreContainer.textContent) + 1
-                console.log(newScore)
+
 
                 const packet = {
                     method: "PATCH",
@@ -102,7 +102,6 @@ document.addEventListener('DOMContentLoaded', function(e){
                 const tenderId = parentDiv.id
                 const scoreContainer = parentDiv.querySelector(".score")
                 const newScore = parseInt(scoreContainer.textContent) - 1
-                console.log(newScore)
 
                 const packet = {
                     method: "PATCH",
@@ -119,6 +118,32 @@ document.addEventListener('DOMContentLoaded', function(e){
                         scoreContainer.textContent = tenderObj.score
                     })
 
+
+            }else if (e.target.matches(".delete")){
+
+                const button = e.target
+                const parentDiv = button.parentElement
+
+                const fullChickenList = parentDiv.parentElement
+
+
+                const tenderId = parentDiv.id
+
+
+
+                const packet = {
+                    method: "DELETE",
+                    headers: {
+                        "content-type": "application/json",
+                        "accept": "application/json"
+                    },
+                    //body: JSON.stringify({score: newScore}),
+                }
+
+                fetch(url + tenderId, packet)
+                    .then(res => res.json())
+
+                fullChickenList.removeChild(parentDiv)
 
             }
         })
